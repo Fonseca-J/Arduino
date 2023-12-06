@@ -1,0 +1,70 @@
+/**
+	semáforo veículos/pedestre
+	
+	Simples semáforo
+  	@author Joao Fonseca
+*/
+
+int botao;  // variávél para o tempo
+
+void setup() {
+  pinMode(7, OUTPUT);        //vermelho carro
+  pinMode(6, OUTPUT);        //amarelo carro
+  pinMode(5, OUTPUT);        //verde   carro
+  pinMode(4, OUTPUT);        //vermelho pedestre
+  pinMode(3, OUTPUT);        //verde   pedestre
+  pinMode(2, INPUT_PULLUP);  //botão
+}
+
+void loop() {
+  botao = digitalRead(2);  //0 (Botão pressionado) | 1 (botão não pressionado)
+  //logica principal
+  if (botao == 0) {  //se o botao foi pressionado
+    //passo 1
+    delay(3000);
+    digitalWrite(5, LOW);   //apagar verde carro
+    digitalWrite(4, HIGH);  // acender amarelo carro
+
+
+    digitalWrite(6, HIGH);  //acender amarelo
+    delay(3000);
+    digitalWrite(6, LOW);   //apagar amarelo
+    digitalWrite(7, HIGH);  //acender vermelho carro
+    digitalWrite(4, LOW);   //apagar vermelho pedestre
+    digitalWrite(3, HIGH);  // acender verde Pedestre
+    delay(3000);
+    digitalWrite(3, LOW);   //apagar verde pedestre
+    digitalWrite(4, HIGH);  //acender vermelho pedestre
+    digitalWrite(7, HIGH);  // acender verde carro
+    delay(3000);
+    
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);  //apagar verde pedestre
+
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);   //apagar verde pedestre
+    delay(600);
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);   //apagar verde pedestre
+    delay(600);
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);   //apagar verde pedestre
+    delay(600);
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);   //apagar verde pedestre
+    delay(600);
+    digitalWrite(4, HIGH);  // acender verde Pedestre
+    delay(600);
+    digitalWrite(4, LOW);  //apagar vermelho pedestre
+    digitalWrite(7, LOW);   //apagar verde carro
+    //passo 2
+  } else {  //se o botao nao foi pressionado
+    digitalWrite(5, HIGH);
+    digitalWrite(4, HIGH);
+  }
+}
